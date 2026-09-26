@@ -6,19 +6,74 @@
 # chunks = process_input(source)
 # print(transcribe_all(chunks))
 
+#===================================================================================================
+
 from dotenv import load_dotenv
 import os
 load_dotenv()
 from utils.audio_processor import process_input
 from core.transcriber import transcribe_all
+from core.summarize import summarize, generate_title
+from core.extractor import extract_action_items, extract_key_decisions, extract_questions
 
 # print('KEY LOADED', os.getenv('SARVAM_API_KEY')) #key debug
 # print('CWD:', os.getcwd())
 
-source = 'https://youtu.be/TOHuYdr6Y0U?si=LC5dHm1ZJcU-OERB'
-language = 'hinglish'
+# source = 'https://youtu.be/_D0YMwS4Z7o?si=cTK-8_ZOFRwWaIqZ'
+# language = 'english'
 
-chunks = process_input(source)
-transcript = transcribe_all(chunks, language = language)
-print("\n=== TRANSCRIPT ===\n")
-print(transcript)
+# chunks = process_input(source)
+# transcript = transcribe_all(chunks, language = language)
+
+# print('\n' + '=' * 60)
+
+# print("\n=== TRANSCRIPT ===\n")
+
+# print('\n' + '=' * 60)
+
+# print(transcript[: 500] + '...' if len(transcript) > 500 else transcript)
+
+# title = generate_title(transcript)
+
+# summary = summarize(transcript)
+
+# print('\n' + '=' * 60)
+
+# print(f'📌 Title : {title}')
+
+# print('\n' + '=' * 60)
+
+# print('\n Summary')
+
+# print('\n' + '=' * 60)
+
+# print(summary)
+
+# action_items = extract_action_items(transcript)
+# decisions = extract_key_decisions(transcript)
+# questions = extract_questions(transcript)
+
+# print("\n" + "=" * 60)
+# print("✅ ACTION ITEMS")
+# print("=" * 60)
+# print(action_items)
+
+# print("\n" + "=" * 60)
+# print("🔑 KEY DECISIONS")
+# print("=" * 60)
+# print(decisions)
+
+# print("\n" + "=" * 60)
+# print("❓ OPEN QUESTIONS")
+# print("=" * 60)
+# print(questions)
+
+transcript = """
+Alice will prepare the project report by Friday.
+Rahul will deploy the application tomorrow.
+"""
+
+action_items = extract_action_items(transcript)
+
+print("\n=== ACTION ITEMS ===")
+print(action_items)
